@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-slim
+FROM ruby:2.7.3-slim
 
 RUN apt update && apt upgrade -y
 
