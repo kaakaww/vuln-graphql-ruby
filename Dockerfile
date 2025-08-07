@@ -1,11 +1,10 @@
-FROM ruby:2.6.5-slim
+FROM ruby:3.0-slim
 
 RUN apt update && apt upgrade -y
 
 RUN apt install --no-install-recommends -y \
 	git \
 	sqlite3 \
-	ruby-sqlite3 \
 	bash \
 	vim \
 	less \
@@ -18,9 +17,7 @@ WORKDIR /graphql
 
 EXPOSE 9000 3000
 
-RUN bundle install
-
-RUN rails db:setup
+RUN rm -f Gemfile.lock && bundle install
 
 COPY docker-entrypoint.sh /usr/local/bin
 

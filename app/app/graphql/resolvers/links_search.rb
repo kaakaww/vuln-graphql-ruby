@@ -1,12 +1,12 @@
 require 'search_object/plugin/graphql'
 require 'graphql/query_resolver'
 
-class Resolvers::LinksSearch
+class Resolvers::LinksSearch < Resolvers::Base
   include SearchObject.module(:graphql)
 
   scope { Link.all }
 
-  type [Types::LinkType]
+  type [Types::LinkType], null: false
 
   class LinkFilter < ::Types::BaseInputObject
     argument :OR, [self], required: false
