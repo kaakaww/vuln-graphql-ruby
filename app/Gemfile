@@ -5,14 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.5'
+ruby '3.0.7'
 
 gem 'bcrypt'
-gem 'bootsnap', require: false
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.6'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 6.0.2.1'
-gem 'sqlite3'
+gem 'rails', '~> 6.1.0'
+gem 'sqlite3', '~> 1.4'
 gem 'validate_url'
 
 gem 'graphql'

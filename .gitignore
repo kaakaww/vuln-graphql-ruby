@@ -27,3 +27,4 @@
 /yarn-error.log
 
 .byebug_history
+/.claude/settings.local.json

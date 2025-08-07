@@ -13,4 +13,11 @@ sed -i'' -E "s/%DEV_SECRET_KEY%/${DEV_SECRET}/g" /graphql/config/secrets.yml
 sed -i'' -E "s/%TEST_SECRET_KEY%/${TEST_SECRET}/g" /graphql/config/secrets.yml
 
 export RAILS_ENV=development
+
+# Setup database on first run
+if [ ! -f /graphql/db/development.sqlite3 ]; then
+    echo "Setting up database..."
+    rails db:setup
+fi
+
 rails server $@
