@@ -10,7 +10,7 @@ ruby '3.0.7'
 gem 'bcrypt'
 gem 'puma', '~> 5.6'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 gem 'sqlite3', '~> 1.4'
 gem 'validate_url'
 
