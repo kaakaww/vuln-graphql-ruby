@@ -2,7 +2,7 @@ module Types
   class QueryMetaType < BaseObject
     graphql_name '_QueryMeta'
 
-    field :count, Int, null: false
+    field :count, Integer, null: false
 
     def count
       object

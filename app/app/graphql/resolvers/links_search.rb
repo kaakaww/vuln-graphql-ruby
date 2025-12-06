@@ -20,8 +20,8 @@ class Resolvers::LinksSearch < Resolvers::Base
   end
 
   option :filter, type: LinkFilter, with: :apply_filter
-  option :first, type: types.Int, with: :apply_first
-  option :skip, type: types.Int, with: :apply_skip
+  option :first, type: Integer, with: :apply_first
+  option :skip, type: Integer, with: :apply_skip
   option :orderBy, type: LinkOrderBy, default: 'createdAt_DESC'
 
   def apply_filter(scope, value)
