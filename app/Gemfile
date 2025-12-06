@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '3.0.7'
+ruby '>= 3.0.0'
 
 gem 'bcrypt'
 gem 'puma', '~> 5.6'
@@ -22,7 +22,7 @@ gem 'search_object_graphql'
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'factory_bot_rails'
-  gem 'graphiql-rails', '1.5.0'
+  gem 'graphiql-rails', '~> 1.8'
   gem 'rubocop'
 end
 
