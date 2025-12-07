@@ -1,5 +1,4 @@
 require 'search_object/plugin/graphql'
-require 'graphql/query_resolver'
 
 class Resolvers::LinksSearch < Resolvers::Base
   include SearchObject.module(:graphql)
@@ -58,11 +57,6 @@ class Resolvers::LinksSearch < Resolvers::Base
   end
 
   def fetch_results
-    # NOTE: Don't run QueryResolver during tests
-    return super unless context.present?
-
-    GraphQL::QueryResolver.run(Link, context, Types::LinkType) do
-      super
-    end
+    super
   end
 end
