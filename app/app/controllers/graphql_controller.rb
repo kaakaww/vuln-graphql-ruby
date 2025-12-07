@@ -4,10 +4,14 @@ class GraphqlController < ApplicationController
 
   def execute
     result = GraphqlTutorialSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
-    render json: result
-  rescue StandardError => e
-    raise e unless Rails.env.development?
 
+    # Check for GraphQL errors and return 500 if present
+    if result['errors'].present?
+      render json: result, status: 500
+    else
+      render json: result
+    end
+  rescue StandardError => e
     handle_error_in_development e
   end
 
@@ -53,6 +57,16 @@ class GraphqlController < ApplicationController
     logger.error error.message
     logger.error error.backtrace.join("\n")
 
-    render json: { error: { message: error.message, backtrace: error.backtrace }, data: {} }, status: 500
+    render json: {
+      error: {
+        message: e.message,
+        backtrace: e.backtrace,
+        error_class: e.class.name,
+        rails_root: Rails.root.to_s,
+        ruby_version: RUBY_VERSION,
+        rails_version: Rails.version
+      },
+      data: {}
+    }, status: 500
   end
 end
